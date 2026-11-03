@@ -1,0 +1,152 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+{\large\bfseries Diagnosztikai feladatsor -- megoldókulcs}
+\end{center}
+
+\begin{enumerate}[leftmargin=*,label=\textbf{\arabic*.},itemsep=9pt,topsep=0pt,parsep=0pt]
+
+\item \textbf{a)} A lejtővel párhuzamosan lefelé $mg\sin\alpha$, felfelé a súrlódási erő
+$\mu N = \mu mg\cos\alpha$ hat, így
+\[
+  ma = mg\sin\alpha - \mu mg\cos\alpha
+  \quad\Longrightarrow\quad
+  a = g(\sin\alpha - \mu\cos\alpha).
+\]
+A tömeg kiesik, tehát a gyorsulás nem függ $m$-től.
+
+\textbf{b)} A test nem indul el, ha a lejtő irányú erőt a tapadási súrlódás ki tudja
+egyensúlyozni: $mg\sin\alpha \le \mu mg\cos\alpha$, azaz $\tan\alpha \le \mu$, vagyis
+$\alpha \le \arctan\mu$. (Szigorúan véve itt a tapadási súrlódási együttható
+$\mu_0 \ge \mu$ dönt, tehát a feltétel $\tan\alpha \le \mu_0$.)
+
+\textbf{c)} Felfelé mozgás közben a súrlódási erő is lefelé mutat, így a test lassul:
+$a = g(\sin\alpha + \mu\cos\alpha)$ nagyságú, lefelé mutató gyorsulással. Megállás után
+vagy nyugalomban marad ($\tan\alpha \le \mu_0$), vagy visszacsúszik, ekkor már az
+a)~részben kapott $g(\sin\alpha - \mu\cos\alpha)$ gyorsulással.
+
+\textbf{d)} Határesetek:
+\begin{itemize}[nosep,leftmargin=1.5em]
+  \item $\mu\to 0$: $a = g\sin\alpha$ -- a súrlódásmentes lejtő ismert eredménye.
+  \item $\alpha\to 0$: $a = -\mu g$ -- vízszintes talajon a csúszó test $\mu g$
+    lassulással fékeződik (magától nem indulna el).
+  \item $\alpha\to 90^\circ$: $a = g$ -- függőleges falnál nincs nyomóerő, nincs
+    súrlódás: szabadesés.
+\end{itemize}
+
+\item
+\begin{minipage}[t]{0.52\linewidth}
+\textbf{a)} A megtett út a $v$--$t$ grafikon alatti terület:
+\[
+  s = \tfrac12\cdot 4\cdot 8 + 2\cdot 8 + \tfrac12\cdot 2\cdot 8
+    = 16 + 16 + 8 = 40~\text{m}.
+\]
+\textbf{b)} A gyorsulás a $v$--$t$ grafikon meredeksége:
+\begin{itemize}[nosep,leftmargin=1.5em]
+  \item $0$--$4$~s: $a = 8/4 = 2~\text{m/s}^2$,
+  \item $4$--$6$~s: $a = 0$,
+  \item $6$--$8$~s: $a = -8/2 = -4~\text{m/s}^2$.
+\end{itemize}
+Az $a$--$t$ grafikon tehát szakaszonként állandó (vízszintes szakaszok, ugrásokkal).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.44\linewidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}[x=0.55cm,y=0.5cm,>=latex]
+  \draw[->] (0,0) -- (9.2,0) node[right] {\scriptsize $t$\,(s)};
+  \draw[->] (0,-4.8) -- (0,3.2) node[above] {\scriptsize $a$\,(m/s$^2$)};
+  \foreach \x in {2,4,6,8} \draw (\x,0.15) -- (\x,-0.15);
+  \foreach \x in {2,4,6,8} \node[above] at (\x,0.1) {\scriptsize \x};
+  \foreach \y in {2,-2,-4} \draw (0.15,\y) -- (-0.15,\y) node[left] {\scriptsize \y};
+  \draw[very thick] (0,2) -- (4,2);
+  \draw[very thick] (4,0) -- (6,0);
+  \draw[very thick] (6,-4) -- (8,-4);
+  \draw[gray,dashed] (4,2) -- (4,0);
+  \draw[gray,dashed] (6,0) -- (6,-4);
+  \draw[gray,dashed] (8,-4) -- (8,0);
+\end{tikzpicture}
+\end{minipage}
+
+\item ($g \approx 10~\text{m/s}^2$-tel számolva.)
+
+\textbf{Kinematikai úton:} $h = \tfrac{g}{2}t^2 \Rightarrow t = \sqrt{2h/g} = 2~\text{s}$,
+és $v = gt = 20~\text{m/s}$.
+
+\textbf{Energiamegmaradással:} $mgh = \tfrac12 mv^2 \Rightarrow
+v = \sqrt{2gh} = \sqrt{400}~\text{m/s} = 20~\text{m/s}$.
+
+A két módszer ugyanazt adja ($g = 9{,}81~\text{m/s}^2$-tel $v \approx 19{,}8~\text{m/s}$).
+
+\item A könyvre két erő hat: a nehézségi erő ($G$, a Föld vonzza a könyvet) és az asztal
+nyomóereje ($N$, az asztal felfelé nyomja a könyvet).
+
+Erő--ellenerő párok (mindig \emph{két különböző testre} hatnak):
+\begin{itemize}[nosep,leftmargin=1.5em]
+  \item A Föld vonzza a könyvet $\leftrightarrow$ a könyv vonzza a Földet (a Föld
+    középpontja felé mutató erő, a Földre hat).
+  \item Az asztal felfelé nyomja a könyvet $\leftrightarrow$ a könyv lefelé nyomja az
+    asztalt (a könyv súlya, az asztalra hat).
+\end{itemize}
+\textbf{Tipikus hiba:} $G$ és $N$ \emph{nem} erő--ellenerő pár, mert ugyanarra a testre
+hatnak. Azért egyenlő nagyságúak, mert a könyv nyugalomban van (Newton I./II.\
+törvénye), nem a III.\ törvény miatt.
+
+\item Ebben a feladatban $W$ a \emph{gáz által végzett} munka, így $Q = \Delta E + W_\text{gáz}$.
+\begin{itemize}[nosep,leftmargin=1.5em]
+  \item $A\to B$ (izoterm tágulás): $W_\text{gáz} > 0$, mert a gáz tágul;
+    $\Delta E = 0$, mert $T$ állandó; így $Q = W_\text{gáz} > 0$, a gáz hőt vesz fel.
+  \item $B\to C$ (izochor melegítés): $W_\text{gáz} = 0$, mert $V$ állandó;
+    $T$ nő, így $\Delta E > 0$, tehát $Q = \Delta E > 0$.
+  \item $C\to A$ (izobár összenyomás): $W_\text{gáz} < 0$, mert a gáz térfogata csökken;
+    állandó nyomáson $V$ csökkenésével $T$ is csökken ($pV = nRT$), így $\Delta E < 0$,
+    és $Q = \Delta E + W_\text{gáz} < 0$, a gáz hőt ad le.
+\end{itemize}
+\emph{Megjegyzés:} a kör az ábrán az óramutatóval ellentétes irányú, ezért a gáz által
+végzett összes munka negatív (a hurok által bezárt terület nagyságú munkát mi végzünk a
+gázon).
+
+\item Az északi pólus közeledtével a gyűrűn átmenő mágneses fluxus nő. A Lenz-törvény
+szerint az indukált áram olyan irányú, hogy mágneses hatásával akadályozza az őt
+létrehozó változást, vagyis a fluxus növekedését. Ezért a gyűrű a mágnes felőli oldalán
+\textbf{északi pólussá} válik: az áram a mágnes felől nézve az \textbf{óramutató
+járásával ellentétes} irányban folyik.
+
+Két északi pólus taszítja egymást, így a mágnesre \textbf{taszító}, a mozgását fékező
+(a gyűrűtől elfelé mutató) erő hat. Ez az energiamegmaradással is összhangban van: a
+gyűrűben fejlődő Joule-hőt a mágnes mozgatásakor végzett munka fedezi.
+
+\item \textbf{Javasolt mérés: fonálinga} (egy fonal és egy kis nehezék szükséges hozzá).
+\begin{enumerate}[nosep,leftmargin=1.5em,label=\arabic*)]
+  \item A mérőszalaggal megmérjük az inga hosszát a felfüggesztési ponttól a nehezék
+    tömegközéppontjáig ($l$).
+  \item Kis kitéréssel ($\lesssim 5$--$10^\circ$) lengetjük az ingát, és a stopperrel
+    $N = 10$--$20$ teljes lengés idejét mérjük; $T = t_N/N$.
+  \item $T = 2\pi\sqrt{l/g}$-ből $g = \dfrac{4\pi^2 l}{T^2}$.
+  \item A mérést több hosszal megismételjük, az eredményeket átlagoljuk (vagy $T^2$-et
+    ábrázoljuk $l$ függvényében, a meredekség $4\pi^2/g$).
+\end{enumerate}
+\textbf{Legnagyobb bizonytalanság:} az \textbf{időmérés} (reakcióidő, kb.\
+$0{,}1$--$0{,}2$~s). A hosszat mm pontossággal mérjük, ami 1~m-es ingánál elhanyagolható.
+Ráadásul $T$ négyzetesen szerepel, így relatív hibája kétszeresen számít:
+$\dfrac{\Delta g}{g} = \dfrac{\Delta l}{l} + 2\dfrac{\Delta T}{T}$. Ezért mérünk sok
+lengést egyszerre. \\
+\emph{Elfogadható alternatíva:} szabadesés ($g = 2h/t^2$), de ott a rövid esési idő miatt
+a reakcióidő még nagyobb relatív hibát okoz. A diák jelölje meg, hogy ott is az
+időmérés a fő hibaforrás.
+
+\end{enumerate}
+
+\end{document}

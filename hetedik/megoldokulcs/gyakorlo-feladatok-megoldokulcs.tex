@@ -1,0 +1,219 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.}, leftmargin=*, itemsep=10pt, topsep=3pt}
+\setlist[enumerate,2]{label=\alph*), leftmargin=2em, itemsep=4pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Az atom szerkezete -- gyakorló feladatok -- megoldókulcs}
+\end{center}
+
+\begin{enumerate}
+\item \textbf{Fonalsugárcső}
+  \begin{enumerate}
+    \item Gyorsítás: $eU = \tfrac12 mv^2$. Körpálya: a Lorentz-erő a centripetális erő,
+      $evB = \dfrac{mv^2}{r}$, ebből $v = \dfrac{e}{m}Br$. Ezt az elsőbe írva:
+      $eU = \tfrac12 m\left(\dfrac{e}{m}\right)^2B^2r^2$, azaz
+      $\dfrac{e}{m} = \dfrac{2U}{B^2r^2}$.\\[3pt]
+      $r = 8{,}3$~cm: $\;\dfrac{e}{m} = \dfrac{2\cdot 150}{(5\cdot 10^{-4})^2\cdot 0{,}083^2}
+      \approx 1{,}74\cdot 10^{11}~\tfrac{\text{C}}{\text{kg}}$.
+    \item $v = \dfrac{e}{m}Br = 1{,}74\cdot 10^{11}\cdot 5\cdot 10^{-4}\cdot 0{,}083
+      \approx 7{,}2\cdot 10^{6}~\tfrac{\text{m}}{\text{s}}$ (a fénysebesség kb.\ $2{,}4\%$-a).
+    \item Hidrogénion: $\dfrac{e}{m_\text{H}} = \dfrac{1{,}6\cdot 10^{-19}}{1{,}67\cdot
+      10^{-27}} \approx 9{,}6\cdot 10^{7}~\tfrac{\text{C}}{\text{kg}}$, az arány
+      $\approx 1800$. Ha a töltésük azonos nagyságú, akkor az elektron kb.\ 1800-szor
+      könnyebb a legkönnyebb atomnál. Mivel minden katódanyagból ugyanilyen részecske
+      lép ki, az elektron \textbf{minden atom alkotórésze}, tehát az atom nem
+      oszthatatlan.
+    \item Az elektronok ütköznek a ritkított gáz atomjaival, és magasabb energiaszintre
+      \textbf{gerjesztik} őket. Visszaugráskor az atomok fotonokat bocsátanak ki
+      ($hf = E_\text{felső} - E_\text{alsó}$), ezért világít a nyaláb mentén a gáz.
+  \end{enumerate}
+
+\item \textbf{Millikan kísérlete}
+  \begin{enumerate}
+    \item $q = \dfrac{mgd}{U} = \dfrac{1{,}63\cdot 10^{-15}\cdot 9{,}8\cdot 5\cdot 10^{-3}}{250}
+      ~\text{C} \approx 3{,}19\cdot 10^{-19}~\text{C} \approx 2e$.
+    \item A negatív cseppre felfelé kell hatnia az elektromos erőnek, tehát a térerősség
+      lefelé mutat: a \textbf{felső lemez a pozitív}.
+    \item A töltések $1{,}6\cdot 10^{-19}$~C-mal osztva: $3{,}0$; $5{,}0$; $4{,}0$; $7{,}0$,
+      tehát $3e$, $5e$, $4e$, $7e$. Az összes mérésből:
+      $e = \dfrac{3{,}19 + 4{,}79 + 8{,}01 + 6{,}42 + 11{,}18}{2+3+5+4+7}\cdot
+      10^{-19}~\text{C} = \dfrac{33{,}59}{21}\cdot 10^{-19}~\text{C}
+      \approx 1{,}60\cdot 10^{-19}~\text{C}$.
+    \item A töltés $2e$-ről $1e$-re csökken, az elektromos erő a felére esik, a csepp
+      \textbf{esni kezd}. Újra lebegtetni kétszeres feszültséggel lehet: $U = 500$~V.
+    \item $m_e = \dfrac{e}{e/m} = \dfrac{1{,}6\cdot 10^{-19}}{1{,}74\cdot 10^{11}}~\text{kg}
+      \approx 9{,}2\cdot 10^{-31}~\text{kg}$ (a pontos érték $9{,}1\cdot 10^{-31}$~kg).
+  \end{enumerate}
+
+\item \textbf{Rutherford szórási kísérlete}
+  \begin{enumerate}
+    \item A Thomson-modellben a pozitív töltés az egész atomban szétkenődik, ezért sehol
+      sincs erős elektromos tér: az $\alpha$-részecske legfeljebb töredék fokkal térülhet
+      el. Az elektronok sem téríthetik el, mert az $\alpha$-részecske kb.\ 7300-szor
+      nehezebb náluk: olyan ez, mintha egy tekegolyó pingponglabdáknak ütközne.
+      A modell szerint tehát szinte minden részecske kis eltérüléssel halad át,
+      visszapattanás gyakorlatilag nincs.
+    \item \textbf{Tapasztalat:} a legtöbb részecske eltérülés nélkül áthaladt, néhány nagy
+      szögben eltérült, kb.\ minden 8000.\ visszapattant.\\
+      \textbf{Következtetések:} az atom nagy része \textbf{üres}. A pozitív töltés egy
+      parányi helyre, az \textbf{atommagba} összpontosul, csak ott elég erős a tér a nagy
+      eltérítéshez. A mag hordozza a tömeg nagy részét is, különben a nehéz
+      $\alpha$-részecske egyszerűen ellökné, és nem pattanna vissza róla. Az elektronok a
+      mag körül, nagy távolságban vannak.
+    \item \textbf{Vékony fólia:} így minden $\alpha$-részecske legfeljebb egy maggal kerül
+      közel (egyetlen szórás), és a vastagabb anyagban az $\alpha$-részecskék elnyelődnének.
+      \textbf{Vákuum:} levegőben az $\alpha$-részecskék néhány cm alatt elveszítik az
+      energiájukat, és a levegő molekuláin is szóródnának.
+    \item Energiamegmaradás: a mozgási energia teljesen elektromos helyzeti energiává alakul
+      a fordulópontban:
+      \[ E = k\frac{(2e)(79e)}{r_\text{min}} \;\Rightarrow\;
+         r_\text{min} = \frac{9\cdot 10^9\cdot 158\cdot (1{,}6\cdot 10^{-19})^2}{5\cdot 10^6\cdot
+         1{,}6\cdot 10^{-19}}~\text{m} \approx 4{,}6\cdot 10^{-14}~\text{m} \]
+      A részecske nem érte el a magot (csak elektromos taszítás hatott), tehát a mag
+      sugara ennél kisebb. Az atom legalább
+      $\dfrac{1{,}4\cdot 10^{-10}}{4{,}6\cdot 10^{-14}} \approx 3000$-szer nagyobb a magnál.
+      (A valódi magsugár kb.\ $7\cdot 10^{-15}$~m.)
+    \item Visszapattanni csak az tud, amelyik szinte telibe, nagyon közel repül el a mag
+      mellett. A mag olyan kicsi, hogy ennek kicsi a valószínűsége, még ezer atomréteg
+      után is.
+  \end{enumerate}
+
+\item \textbf{A hidrogénatom színképe}
+  \begin{enumerate}
+    \item
+      \begin{minipage}[t]{0.5\linewidth}
+      $E_1 = -13{,}6$~eV, $\;E_2 = -3{,}4$~eV,\\
+      $E_3 \approx -1{,}51$~eV, $\;E_4 = -0{,}85$~eV.\\[3pt]
+      A szintek felfelé egyre sűrűbbek, és a $0$~eV-hoz ($n = \infty$, ionizált állapot)
+      tartanak.
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.42\linewidth}\vspace{0pt}\centering
+      \begin{tikzpicture}[x=1cm,y=0.42cm,font=\scriptsize]
+        \foreach \n in {1,2,3,4}{
+          \pgfmathsetmacro{\E}{-13.6/(\n*\n)}
+          \draw[thick] (0,\E) -- (4,\E);
+          \node[left] at (0,\E) {$n=\n$};}
+        \draw[dashed] (0,0) -- (4,0) node[right] {$0$};
+        \node[right] at (4,-13.6) {$-13{,}6$~eV};
+        \node[right] at (4,-3.4) {$-3{,}4$~eV};
+        \node[right] at (4,-1.51) {$-1{,}51$~eV};
+      \end{tikzpicture}
+      \end{minipage}
+    \item $3\to2$: $13{,}6\left(\tfrac14 - \tfrac19\right) = 1{,}89$~eV $\Rightarrow$
+      $\lambda = \tfrac{1240}{1{,}89} \approx 656$~nm (vörös);\\
+      $4\to2$: $13{,}6\left(\tfrac14 - \tfrac1{16}\right) = 2{,}55$~eV $\Rightarrow$
+      $\lambda \approx 486$~nm (kékeszöld);\\
+      $5\to2$: $13{,}6\left(\tfrac14 - \tfrac1{25}\right) = 2{,}86$~eV $\Rightarrow$
+      $\lambda \approx 434$~nm (kékes-ibolya).
+    \item Az $n=1$-re érkező átmenetek közül a legkisebb energiájú is $E_2 - E_1 =
+      10{,}2$~eV, ami $122$~nm. Mind az \textbf{ultraibolyában} van (Lyman-sorozat), a
+      szemünk ezt nem érzékeli.
+    \item Ionizációs energia: $13{,}6$~eV. A legnagyobb, még ionizáló hullámhossz
+      $\lambda = \tfrac{1240}{13{,}6} \approx 91$~nm (ennél rövidebb mind ionizál).
+      Az $n=2$ állapotból $3{,}4$~eV kell, ehhez $\lambda \le 365$~nm (közeli UV): látható
+      fény a hidrogént még gerjesztett állapotból sem ionizálja.
+    \item $r_n = n^2\cdot 0{,}053$~nm: $\;r_2 = 0{,}212$~nm, $\;r_3 = 0{,}477$~nm.
+  \end{enumerate}
+
+\item \textbf{Ütközéses gerjesztés}
+  \begin{enumerate}
+    \item A higanyatom \textbf{csak pontosan $4{,}9$~eV}-ot tud felvenni (az első gerjesztett
+      szintje). Ennél kisebb energiánál az ütközések rugalmasak: a nehéz atom nem vesz át
+      energiát, az elektronok eljutnak az anódhoz. $4{,}9$~V-nál az elektronok az
+      ütközésben elveszítik az energiájukat, és nem tudják leküzdeni az anód előtti kis
+      fékező feszültséget, ezért az áram leesik. Nagyobb feszültségnél újra
+      felgyorsulnak, és $9{,}8$~V-nál már kétszer tudnak gerjeszteni, $14{,}7$~V-nál
+      háromszor, és így tovább.
+    \item $\lambda = \dfrac{1240}{4{,}9}~\text{nm} \approx 253$~nm: ultraibolya, nem látható.
+    \item Folytonosan, \textbf{monoton növekvő} görbét, letörések nélkül: az elektronok
+      bármekkora kis energiát átadhatnának, nem lenne kitüntetett feszültség.
+    \item $E_2 - E_1 = 10{,}2$~eV $\le 12{,}5$~eV, $\;E_3 - E_1 \approx 12{,}09$~eV $\le
+      12{,}5$~eV, de $E_4 - E_1 = 12{,}75$~eV $> 12{,}5$~eV. Az atomok tehát az $n=2$ vagy
+      az $n=3$ állapotba gerjesztődhetnek.\\
+      Lehetséges vonalak: $3\to2$: $656$~nm (\textbf{vörös, látható});
+      $3\to1$: $\tfrac{1240}{12{,}09} \approx 103$~nm (UV); $2\to1$: $122$~nm (UV).
+      Csak a vörös vonal látható.
+    \item \textbf{Nem nyelődnének el.} A foton csak egészben nyelődhet el, ezért energiájának
+      \emph{pontosan} meg kell egyeznie egy szintkülönbséggel ($10{,}2$; $12{,}09$;
+      $12{,}75$~eV\dots), vagy nagyobbnak kell lennie az ionizációs energiánál. A $12{,}5$~eV
+      egyikkel sem egyezik, és $13{,}6$~eV-nál kisebb, így a gáz átlátszó rá. Az elektron
+      viszont energiájának csak egy \emph{részét} adja át, a többit mozgási energiaként
+      megtartja, ezért bármelyik szintet gerjesztheti, amelyikhez elég energiája van.
+  \end{enumerate}
+
+\item \textbf{De Broglie és Bohr}
+  \begin{enumerate}
+    \item $mv_1r_1 = \dfrac{h}{2\pi} \Rightarrow v_1 = \dfrac{h}{2\pi m r_1} =
+      \dfrac{6{,}63\cdot 10^{-34}}{2\pi\cdot 9{,}1\cdot 10^{-31}\cdot 5{,}3\cdot
+      10^{-11}}~\tfrac{\text{m}}{\text{s}} \approx 2{,}2\cdot 10^{6}~\tfrac{\text{m}}{\text{s}}$.
+    \item $\lambda_1 = \dfrac{h}{mv_1} = \dfrac{6{,}63\cdot 10^{-34}}{9{,}1\cdot 10^{-31}\cdot
+      2{,}2\cdot 10^{6}}~\text{m} \approx 3{,}3\cdot 10^{-10}~\text{m} = 0{,}33$~nm.
+      A kerület $2\pi r_1 = 2\pi\cdot 0{,}053~\text{nm} \approx 0{,}33$~nm: \textbf{pontosan
+      egy hullámhossz} fér rá.\\
+      Az $n=2$ pályán $r_2 = 4r_1$, a sebesség feleakkora, így $\lambda_2 = 2\lambda_1$. A kerület
+      $2\pi\cdot 4r_1 = 4\lambda_1 = 2\lambda_2$: \textbf{két hullámhossz} fér rá.
+    \item $2\pi r = n\lambda = n\dfrac{h}{mv} \;\Longleftrightarrow\; mvr = n\dfrac{h}{2\pi}$.
+    \item $\Delta p \ge \dfrac{h}{4\pi\Delta x} = \dfrac{6{,}63\cdot 10^{-34}}{4\pi\cdot
+      10^{-10}} \approx 5{,}3\cdot 10^{-25}~\tfrac{\text{kg}\cdot\text{m}}{\text{s}}$,
+      $\;\Delta v = \dfrac{\Delta p}{m} \approx 5{,}8\cdot 10^{5}~\tfrac{\text{m}}{\text{s}}$.\\
+      Ez a keringési sebesség kb.\ negyede. Az elektron sebessége (és iránya) tehát
+      annyira bizonytalan, hogy egy jól meghatározott pályának nincs értelme. Ezért
+      lép a kvantummechanikában a pálya helyére az elektronfelhő.
+  \end{enumerate}
+
+\item \textbf{Szóbeli tétel -- mintaválasz (Az atommodellek fejlődése):}
+  A 19.\ század végéig az atomot oszthatatlannak tartották. Thomson 1897-ben a
+  katódsugárzást elektromos és mágneses térben eltérítve kimutatta, hogy negatív
+  részecskékből áll, amelyek fajlagos töltése kb.\ 1800-szor nagyobb a hidrogénionénál,
+  és minden anyagban ugyanaz. Ez az elektron, és Millikan olajcsepp-kísérlete szerint a
+  töltése az elemi töltés. Mivel az atom semleges, Thomson szerint a pozitív töltés
+  egyenletesen tölti ki az atomot, ebbe ágyazódnak az elektronok (mazsolás puding modell).
+  Rutherford munkatársai aranyfóliára lőtt $\alpha$-részecskékkel azt tapasztalták, hogy a
+  legtöbb eltérülés nélkül áthalad, de néhány nagy szögben eltérül vagy visszapattan. Ez
+  a Thomson-modellel nem magyarázható. Rutherford szerint a pozitív töltés és a tömeg
+  szinte teljes egésze egy parányi atommagban van, amely körül az elektronok keringenek
+  (bolygómodell). A klasszikus elektrodinamika szerint azonban a keringő elektron
+  sugározna, a magba zuhanna, és folytonos színképet adna, holott az atomok stabilak, és
+  vonalas színképet bocsátanak ki. Bohr 1913-ban Planck kvantumgondolatát alkalmazta: az
+  elektron csak meghatározott pályákon keringhet, ott nem sugároz, és fotont csak
+  pályaváltáskor bocsát ki, $hf = E_\text{felső} - E_\text{alsó}$. Ezzel pontosan
+  megmagyarázta a hidrogén színképét, és a diszkrét energiaszinteket a Franck--Hertz-kísérlet
+  ütközésekkel is igazolta. A Bohr-modell azonban csak a hidrogénre működött, és nem
+  indokolta a kvantumfeltételt. De Broglie anyaghullám-elmélete szerint a megengedett
+  pályák azok, amelyeken az elektronhullám állóhullámot alkot. Végül a kvantummechanikai
+  modellben (Schrödinger, Heisenberg) az elektronnak nincs pályája, csak megtalálási
+  valószínűsége (elektronfelhő). Állapotát kvantumszámok írják le, a Pauli-elvből pedig
+  következik a héjszerkezet és a periódusos rendszer.
+
+  \medskip
+  \textbf{Szempontok:}
+  \begin{itemize}[nosep,leftmargin=1.5em]
+    \item minden modellnél: kísérleti alap $\to$ modell $\to$ ellentmondás $\to$ továbblépés;
+    \item elektron felfedezése (katódsugárzás, $e/m$), Millikan (elemi töltés);
+    \item Thomson-modell és jóslata;
+    \item Rutherford-kísérlet három megfigyelése és a következtetés (atommag);
+    \item a Rutherford-modell két problémája (stabilitás, vonalas színkép);
+    \item Bohr posztulátumai, $hf = E_\text{felső} - E_\text{alsó}$, a hidrogén színképe,
+      Franck--Hertz-kísérlet;
+    \item a Bohr-modell korlátai, de Broglie állóhullám-magyarázata;
+    \item kvantummechanikai modell: elektronfelhő, határozatlanság, kvantumszámok,
+      Pauli-elv;
+    \item időrend, összefüggő szöveg, helyes szakszavak.
+  \end{itemize}
+\end{enumerate}
+
+\end{document}

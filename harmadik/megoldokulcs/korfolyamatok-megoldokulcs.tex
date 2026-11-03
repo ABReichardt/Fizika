@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.}, leftmargin=*, itemsep=9pt, topsep=2pt}
+\setlist[enumerate,2]{label=\alph*), leftmargin=2em, itemsep=2pt, topsep=2pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\large\bfseries Adiabatikus folyamatok és körfolyamatok -- megoldókulcs}\\[5pt]
+  \fbox{\parbox{0.8\textwidth}{\centering
+    $\Delta E = Q + W$, ahol $W$ a gázon végzett munka.}}
+\end{center}
+
+\begin{enumerate}
+\item \textbf{Biciklipumpa:} gyors pumpáláskor összenyomjuk a levegőt, $W > 0$. A hőcserére
+  nincs idő, $Q \approx 0$, így $\Delta E = W > 0$: a levegő felmelegszik, és ez melegíti a
+  pumpa falát (a dugattyú súrlódása kisebb mértékben szintén hozzájárul).
+
+  \textbf{Dezodoros flakon:} a kiáramló gáz gyorsan kitágul, munkát végez a környezetén,
+  vagyis $W < 0$; $Q \approx 0$, így $\Delta E = W < 0$: a gáz lehűl. (Emellett a
+  folyékony hajtógáz párolgása is hőt von el, ez erősíti a hatást.)
+
+  \textbf{Miért adiabatikus a gyors folyamat?} A hőátadáshoz (hővezetéshez) idő kell. Ha a
+  folyamat sokkal gyorsabb, mint a hőcsere a környezettel, akkor érdemi hő nem tud
+  átáramlani, így $Q \approx 0$.
+
+\item \textbf{Adiabatikus összenyomás:}
+  $Q = 0$, mert definíció szerint nincs hőcsere;
+  $W > 0$, mert a gáz térfogata csökken, mi végzünk rajta munkát;
+  $\Delta E = Q + W = W > 0$;
+  $\Delta T > 0$, mert ideális gáz belső energiája a hőmérséklettel arányos.
+
+  \textbf{Adiabatikus tágulás:}
+  $Q = 0$, mert definíció szerint nincs hőcsere;
+  $W < 0$, mert a gáz tágul, ő végez munkát a környezetén;
+  $\Delta E = W < 0$;
+  $\Delta T < 0$, a gáz lehűl.
+
+\item \textbf{Végnyomás:} az adiabatikus esetben nagyobb. Izoterm összenyomáskor $T$
+  állandó, adiabatikusnál viszont $\Delta E = W > 0$, tehát a gáz felmelegszik. Ugyanakkora
+  $V_2$ térfogaton $p = nRT/V$ miatt a magasabb hőmérséklethez nagyobb nyomás tartozik.
+  (Az ábrán az adiabata meredekebb, mint az izoterma.)
+
+  \textbf{Munka:} az adiabatikus esetben végzünk több munkát. Ugyanabból a pontból indulva
+  az adiabata az egész összenyomás alatt az izoterma fölött halad, vagyis minden
+  közbülső térfogaton nagyobb a nyomás, ezért a görbe alatti terület (a munka) is
+  nagyobb.
+
+\item A pontok hőmérséklete ($pV = nRT$ alapján, $T_0 = p_0V_0/(nR)$):
+  $T_A = T_0$, $T_B = 2T_0$, $T_C = 4T_0$, $T_D = 2T_0$.
+  \begin{enumerate}
+    \item Előjelek:
+      \begin{center}
+      \renewcommand{\arraystretch}{1.3}
+      \begin{tabular}{|l|c|c|c|}
+      \hline
+      Szakasz & $W$ & $Q$ & $\Delta E$ \\ \hline
+      $A\to B$ izobár tágulás     & $-$ & $+$ & $+$ \\
+      $B\to C$ izochor melegítés  & $0$ & $+$ & $+$ \\
+      $C\to D$ izobár összenyomás & $+$ & $-$ & $-$ \\
+      $D\to A$ izochor hűtés      & $0$ & $-$ & $-$ \\ \hline
+      \end{tabular}
+      \end{center}
+      Indoklás: tágulásnál $W<0$, összenyomásnál $W>0$, izochor szakaszon $W=0$.
+      $\Delta E$ előjele $\Delta T$ előjelével egyezik ($T$: $T_0\to 2T_0\to 4T_0\to
+      2T_0\to T_0$). $Q = \Delta E - W$ előjele a fenti esetekben egyértelmű.
+    \item $W_{AB} = -p_0(2V_0 - V_0) = -p_0V_0$, $\quad W_{BC} = 0$,\\
+      $W_{CD} = -2p_0(V_0 - 2V_0) = +2p_0V_0$, $\quad W_{DA} = 0$.\\
+      Összesen: $W_\text{össz} = +p_0V_0$ (a gázon végzett munka).
+    \item $\Delta E_\text{össz} = 0$, mert a gáz visszatér a kiinduló állapotba, a belső
+      energia pedig állapotjelző.
+    \item $Q_\text{össz} = \Delta E_\text{össz} - W_\text{össz} = -p_0V_0$: a gáz
+      összességében $p_0V_0$ hőt \emph{lead}.
+    \item A hasznos munka nagysága a körfolyamat görbéje által \textbf{bezárt terület}:
+      $(2p_0 - p_0)(2V_0 - V_0) = p_0V_0$. Az előjelet a körüljárási irány adja meg: ha az
+      óramutató járásával megegyező, a gáz végez munkát (hőerőgép); ha ellentétes, mint
+      itt, akkor mi végzünk munkát a gázon.
+  \end{enumerate}
+  \emph{Tanári megjegyzés:} ebben az irányban a körfolyamat nem hőerőgép ($W_\text{össz}
+  > 0$, $Q_\text{össz} < 0$). Ez jó átvezetés az 5.~feladathoz és a következő órához.
+
+\item Minden szakaszon megfordul $W$, $Q$ és $\Delta E$ előjele (ugyanaz a szakasz
+  visszafelé: tágulásból összenyomás lesz, melegítésből hűtés). Ennek megfelelően
+  $W_\text{össz} = -p_0V_0$ (a gáz végez munkát, hőerőgép lesz belőle) és $Q_\text{össz} =
+  +p_0V_0$ (a gáz összességében hőt vesz fel).
+
+  \textbf{Nem változik:} az egyes pontok állapotjelzői ($p$, $V$, $T$), a szakaszonkénti
+  mennyiségek nagysága, a bezárt terület nagysága és $\Delta E_\text{össz} = 0$.
+
+\item Számolás nélkül:
+  $Q = 0$, mert adiabatikus (nincs hőcsere);
+  $W < 0$, mert a gáz tágul, ő végez munkát;
+  $\Delta E = W < 0$, ezért $\Delta T < 0$: a gáz lehűl.
+\end{enumerate}
+
+\end{document}

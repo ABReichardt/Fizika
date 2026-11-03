@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[magyar]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.}, leftmargin=*, itemsep=9pt, topsep=3pt}
+\setlist[enumerate,2]{label=\alph*), leftmargin=2em, itemsep=3pt, topsep=2pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\large\bfseries Fajhők és körfolyamatok -- hatásfok -- megoldókulcs}\\[3pt]
+  \fbox{\parbox{0.8\textwidth}{\centering
+    $\Delta E = Q + W$, ahol $W$ a gázon végzett munka.\\
+    A hatásfok nevezőjében \textbf{csak} a felvett hő szerepel.}}
+\end{center}
+
+\begin{enumerate}
+\item Ugyanakkora $\Delta T$ esetén $\Delta E$ mindkét esetben ugyanannyi, mert ideális gáz
+  belső energiája csak $T$-től függ.
+  \begin{itemize}[nosep,leftmargin=1.5em]
+    \item Állandó térfogaton $W = 0$, így $Q_V = \Delta E$.
+    \item Állandó nyomáson a gáz melegítés közben kitágul, $W = -p\Delta V < 0$, így
+      $Q_p = \Delta E - W = \Delta E + p\Delta V > Q_V$.
+  \end{itemize}
+  Állandó nyomáson kell több hő. A különbség ($p\Delta V$) arra fordítódik, hogy a gáz
+  tágulás közben munkát végez a környezetén. Igen, ebből következik, hogy $c_p > c_V$.
+  (Ideális gázra $p\Delta V = nR\Delta T$, így mólonként $c_p - c_V = R$.)
+
+\item Izochor esetben $Q_V = n\,c_V\,\Delta T$, izobár esetben $Q_p = n\,c_p\,\Delta T$
+  (ahol $c_V$, $c_p$ a mólhők).
+
+  Az \textbf{izochor} esetben egyezik meg a közölt hő a belső energia megváltozásával,
+  mert ott $W = 0$, így $Q = \Delta E$. (Emiatt bármely folyamatban
+  $\Delta E = n\,c_V\,\Delta T$.)
+
+\item $\displaystyle \eta = \frac{W_\text{h}}{Q_\text{be}}
+  \;\Bigl(= \frac{Q_\text{be} - |Q_\text{le}|}{Q_\text{be}}
+  = 1 - \frac{|Q_\text{le}|}{Q_\text{be}}\Bigr)$.
+
+  \textbf{Miért csak a felvett hő?} A hatásfok azt méri, hogy a \emph{befektetett}
+  energiából (amiért fizetünk, pl.\ az elégetett üzemanyagért) mennyi hasznosul. A leadott
+  hő a hideg tartályba távozó veszteség, nem kapjuk vissza.
+
+  \textbf{Miért nem az előjeles összeg?} Egy teljes körfolyamatban $\Delta E = 0$, így az
+  I.~főtétel szerint a hők előjeles összege éppen a hasznos munka: $Q_\text{be} -
+  |Q_\text{le}| = W_\text{h}$. Ezzel osztva a ,,hatásfok'' mindig pontosan 1 lenne,
+  ami értelmetlen.
+
+\item Egyatomos gáz: $c_V = \tfrac32 R$, $c_p = \tfrac52 R$; $\;nR\,\Delta T = \Delta(pV)$.
+  \begin{enumerate}
+    \item $T = \dfrac{pV}{nR}$: $\quad T_A = \dfrac{p_0V_0}{nR} \equiv T_0$, $\quad
+      T_B = \dfrac{2p_0V_0}{nR} = 2T_0$, $\quad T_C = \dfrac{4p_0V_0}{nR} = 4T_0$, $\quad
+      T_D = \dfrac{2p_0V_0}{nR} = 2T_0$.
+    \item Szakaszonként ($p_0V_0$ egységben):
+      \begin{center}
+      \renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{|l|c|c|c|}
+      \hline
+      Szakasz & $Q$ & $W$ & $\Delta E$ \\ \hline
+      $A\to B$ izochor melegítés & $\tfrac32 nR\cdot T_0 = +\tfrac32$ & $0$ & $+\tfrac32$ \\
+      $B\to C$ izobár tágulás    & $\tfrac52 nR\cdot 2T_0 = +5$ & $-2p_0\cdot V_0 = -2$ & $+3$ \\
+      $C\to D$ izochor hűtés     & $\tfrac32 nR\cdot(-2T_0) = -3$ & $0$ & $-3$ \\
+      $D\to A$ izobár összenyomás & $\tfrac52 nR\cdot(-T_0) = -\tfrac52$ & $+p_0\cdot V_0 = +1$ & $-\tfrac32$ \\ \hline
+      \textbf{Összesen} & $+1$ & $-1$ & $0$ \\ \hline
+      \end{tabular}
+      \end{center}
+      Ellenőrzés soronként: $Q + W = \Delta E$.
+    \item Hőt az $A\to B$ és a $B\to C$ szakaszon vesz fel:
+      $Q_\text{be} = \tfrac32 + 5 = \tfrac{13}{2}\,p_0V_0$.
+      (Leadott hő: $|Q_\text{le}| = 3 + \tfrac52 = \tfrac{11}{2}\,p_0V_0$.)
+    \item A munkák összege: $W_\text{össz} = -2 + 1 = -1\,p_0V_0$, vagyis a gáz
+      $W_\text{h} = p_0V_0$ hasznos munkát végez.\\
+      Terület: $(2p_0 - p_0)(2V_0 - V_0) = p_0V_0$. \checkmark{}
+      (Harmadik ellenőrzés: $Q_\text{be} - |Q_\text{le}| = \tfrac{13}{2} - \tfrac{11}{2} = 1$.)
+    \item $\displaystyle \eta = \frac{W_\text{h}}{Q_\text{be}} = \frac{p_0V_0}{\tfrac{13}{2}p_0V_0}
+      = \frac{2}{13} \approx 0{,}154 \approx 15{,}4\%$.
+    \item $\Delta E_\text{össz} = 0$, mert a gáz visszatér a kiinduló állapotba.
+      Szakaszonként: $\tfrac32 + 3 - 3 - \tfrac32 = 0$. \checkmark
+  \end{enumerate}
+  \emph{Tipikus hiba:} a nevezőbe $Q_\text{össz} = p_0V_0$ kerül, így $\eta = 100\%$ jön ki.
+
+\item Legmagasabb hőmérsékletű a $C$ állapot ($4T_0$), legalacsonyabb az $A$ ($T_0$).
+  \[
+    \eta_\text{max} = 1 - \frac{T_\text{hideg}}{T_\text{meleg}} = 1 - \frac{T_0}{4T_0}
+    = \frac34 = 75\%.
+  \]
+  A mi körfolyamatunk hatásfoka ($\approx 15{,}4\%$) jóval kisebb ennél, összhangban a
+  II.~főtétellel. Az ok: a gáz nem csak a két szélső hőmérsékleten cserél hőt. A hő
+  nagy részét a $T_\text{max}$-nál alacsonyabb hőmérsékleten veszi fel, és a
+  $T_\text{min}$-nél magasabb hőmérsékleten adja le. Az ideális gépnél (Carnot) csak
+  a két szélső hőmérsékleten történik hőcsere.
+\end{enumerate}
+
+\end{document}
