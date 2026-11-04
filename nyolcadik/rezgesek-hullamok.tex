@@ -535,7 +535,62 @@ hullám fér rájuk.}
 \end{minipage}
 
 %====================================================================
-\dia{11. Huygens elve és az elhajlás}
+\dia{11. Állóhullám, ha csak az egyik vég rögzített}
+
+\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
+\begin{itemize}
+  \item Ha a kötél egyik vége rögzített, a másik viszont \textbf{szabad} (pl.\ egy függőleges
+    rúdon csúszó könnyű gyűrűhöz kötjük), akkor a rögzített végen \textbf{csomópont}, a
+    szabad végen \textbf{duzzadóhely} alakul ki.
+  \item Egy csomópont és a szomszédos duzzadóhely távolsága $\lambda/4$, ezért a hossz a
+    negyed hullámhossz \textbf{páratlan} számú többszöröse:
+\end{itemize}
+\begin{fontos}
+\[ L = (2n-1)\frac{\lambda}{4} \quad\Longrightarrow\quad f_n = (2n-1)\frac{c}{4L}, \qquad n = 1, 2, 3, \dots \]
+\centering Csak a \textbf{páratlan} többszörösök szólnak: $f_1,\ 3f_1,\ 5f_1, \dots$\\
+Az alaphang \textbf{fele} akkora, mint az ugyanilyen hosszú, két végén rögzített húré.
+\end{fontos}
+\begin{itemize}
+  \item Ugyanígy viselkedik a levegő az \textbf{egyik végén zárt sípban} (zárt vég:
+    csomópont, nyitott vég: duzzadóhely) és az egyik végén befogott rúd.
+\end{itemize}
+\begin{pelda}
+Egy $L = 8{,}5$~cm mély kémcső fölé fújunk, $c = 340~\tfrac{\text{m}}{\text{s}}$. Alaphang:
+$f_1 = \dfrac{c}{4L} = \dfrac{340}{4\cdot 0{,}085}~\text{Hz} = 1000~\text{Hz}$. A következő
+lehetséges hang $f_2 = 3f_1 = 3000$~Hz (2000~Hz \textbf{nem} szólhat!).
+\end{pelda}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}\centering
+\begin{tikzpicture}[font=\small]
+  \foreach \n/\yy in {1/0,2/-2.6,3/-5.2}{
+    \begin{scope}[yshift=\yy cm]
+      \pgfmathtruncatemacro{\m}{2*\n-1}
+      \draw[very thick,blue!70!black,domain=0:7,samples=100] plot (\x,{0.8*sin(\m*\x/7*90)});
+      \draw[thick,blue!40,dashed,domain=0:7,samples=100] plot (\x,{-0.8*sin(\m*\x/7*90)});
+      \foreach \k in {1,...,\n} \fill[red] ({7*2*(\k-1)/\m},0) circle (2.5pt);
+      \fill[pattern=north east lines] (-0.2,-0.5) rectangle (0,0.5);
+      \draw[thick,gray] (7,-1.0) -- (7,1.0);
+      \draw[thick,black] (7,0.8) circle (2pt);
+      \draw[thick,black] (7,-0.8) circle (2pt);
+      \node[right] at (7.3,0) {$L = \m\,\lambda/4$};
+    \end{scope}}
+  \node[font=\scriptsize,red] at (3.5,-6.4) {piros pontok: csomópontok};
+  \node[font=\scriptsize,anchor=south] at (0,1.0) {rögzített vég};
+  \node[font=\scriptsize,anchor=south] at (7,1.0) {szabad vég};
+\end{tikzpicture}
+
+\vspace{12pt}
+{\small\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}lll@{}}
+ & \textbf{két vég rögzített} & \textbf{egyik vég szabad} \\ \hline
+hossz & $L = n\,\lambda/2$ & $L = (2n-1)\,\lambda/4$ \\
+frekvenciák & $f_1,\ 2f_1,\ 3f_1, \dots$ & $f_1,\ 3f_1,\ 5f_1, \dots$ \\
+alaphang & $f_1 = c/(2L)$ & $f_1 = c/(4L)$ \\
+\end{tabular}}
+\end{minipage}
+
+%====================================================================
+\dia{12. Huygens elve és az elhajlás}
 
 \begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -579,7 +634,7 @@ ad. Elhajlást csak nagyon keskeny réseken mutat (optikai rács, előző óra!)
 \end{minipage}
 
 %====================================================================
-\dia{12. Összefoglalás}
+\dia{13. Összefoglalás}
 
 \begin{minipage}[t]{0.50\linewidth}\vspace{0pt}
 \begin{fontos}[title=Rezgések,fonttitle=\bfseries]
@@ -604,6 +659,8 @@ törés & $\dfrac{\sin\alpha}{\sin\beta} = \dfrac{c_1}{c_2}$, \; $f$ állandó \
 erősítés & $\Delta s = k\lambda$ \\
 kioltás & $\Delta s = (2k+1)\lambda/2$ \\
 húr állóhulláma & $L = n\lambda/2$, \; $f_n = n\,c/(2L)$ \\
+egyik vége szabad & $L = (2n-1)\lambda/4$, \\
+ & $f_n = (2n-1)\,c/(4L)$ \\
 elhajlás & jelentős, ha a rés $\approx \lambda$ \\
 \end{tabular}
 \end{fontos}
