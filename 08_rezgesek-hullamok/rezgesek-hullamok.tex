@@ -164,62 +164,14 @@ eltolódás), ha az egyik a felső, a másik az alsó szélső helyzetben van.
 \end{minipage}
 
 %====================================================================
-\dia{3. Mitől harmonikus a rezgés? Rugós rezgő és fonálinga}
-
-\begin{minipage}[t]{0.56\linewidth}\vspace{0pt}
-\begin{itemize}
-  \item A rezgés akkor harmonikus, ha a testre ható eredő erő \textbf{arányos a kitéréssel
-    és vele ellentétes irányú} (\textbf{lineáris erőtörvény}):
-    \[ F = -D\,y \]
-    Rugónál $D$ a rugóállandó. Newton II.\ törvényéből $ma = -Dy$, és ezt $a = -\omega^2y$-nal
-    összevetve (részletesen: következő dia):
-\end{itemize}
-\begin{fontos}
-\[ \omega = \sqrt{\frac{D}{m}} \quad\Longrightarrow\quad
-   \boxed{T = 2\pi\sqrt{\frac{m}{D}}} \quad\text{(rugós rezgő)} \]
-\[ \boxed{T = 2\pi\sqrt{\frac{l}{g}}} \quad\text{(fonálinga, kis kitérésnél)} \]
-\end{fontos}
-\begin{itemize}
-  \item A periódusidő \textbf{nem függ az amplitúdótól}. Ezért lehet ingával órát
-    szabályozni.
-  \item Nehezebb test lassabban rezeg, keményebb rugó gyorsabban. Az inga periódusideje nem
-    függ a tömegtől, csak a hossztól (és $g$-től).
-\end{itemize}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.41\linewidth}\vspace{0pt}
-\begin{pelda}
-\textbf{Rugós rezgő:} $D = 40~\tfrac{\text{N}}{\text{m}}$, $m = 0{,}4$~kg, $A = 5$~cm.\\[3pt]
-$\omega = \sqrt{\dfrac{40}{0{,}4}} = 10~\tfrac1{\text{s}}$, \quad
-$T = \dfrac{2\pi}{\omega} \approx 0{,}63$~s, \quad $f \approx 1{,}6$~Hz\\[3pt]
-$v_\text{max} = A\omega = 0{,}05\cdot 10 = 0{,}5~\tfrac{\text{m}}{\text{s}}$\\[2pt]
-$a_\text{max} = A\omega^2 = 0{,}05\cdot 100 = 5~\tfrac{\text{m}}{\text{s}^2}$
-
-\medskip
-\textbf{Fonálinga:} $l = 1$~m:\\[2pt]
-$T = 2\pi\sqrt{\dfrac{1}{9{,}8}}~\text{s} \approx 2{,}0$~s.
-\end{pelda}
-
-\centering
-\begin{tikzpicture}[>=Stealth,font=\small]
-  \fill[pattern=north east lines] (-0.8,0) rectangle (0.8,0.15);
-  \draw[thick] (-0.8,0) -- (0.8,0);
-  \draw[dashed,gray] (0,0) -- (0,-2.2);
-  \draw[thick] (0,0) -- (-115:2.2);
-  \fill[orange!80!black] (-115:2.2) circle (5pt);
-  \draw (0,-0.7) arc (-90:-115:0.7);
-  \node at (-0.25,-0.95) {\scriptsize $\alpha$};
-  \node[right] at (-0.4,-1.1) {$l$};
-\end{tikzpicture}
-\end{minipage}
-
-%====================================================================
-\dia{4. Részletesen: miért harmonikus a rugós rezgő? A mozgásegyenlet}
+\dia{3. Miért harmonikus a rugós rezgő? A mozgásegyenlet}
 
 \begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
 \begin{itemize}
   \item \textbf{1.\ Az erő.} Vízszintes, súrlódásmentes rugós rezgőnél az eredő erő a
     rugóerő. Ez arányos a rugó megnyúlásával (összenyomásával), és mindig az egyensúlyi
-    helyzet felé mutat: \;$F = -D\,y$ \;(a mínusz jel: a kitéréssel ellentétes irányú).
+    helyzet felé mutat: \;$F = -D\,y$ \;($D$: rugóállandó; a mínusz jel: a kitéréssel
+    ellentétes irányú).
   \item \textbf{2.\ Newton II.\ törvénye:} \;$ma = -Dy$, \;azaz\;
     $\boxed{a = -\dfrac{D}{m}\,y}$\,. \;Ez a test \textbf{mozgásegyenlete}: minden helyzetben
     megadja a gyorsulást.
@@ -234,8 +186,9 @@ $T = 2\pi\sqrt{\dfrac{1}{9{,}8}}~\text{s} \approx 2{,}0$~s.
     amplitúdótól.
 \end{itemize}
 \begin{fontos}
-\centering \textbf{Általános szabály:} ha egy mozgásra $a = -(\text{állandó})\cdot y$, akkor
-a mozgás harmonikus rezgés, és $\omega^2 = \text{állandó}$.
+\textbf{Általános szabály (lineáris erőtörvény):} ha az eredő erő $F = -D\,y$ alakú
+(arányos a kitéréssel és vele ellentétes irányú), a mozgás harmonikus rezgés:
+\;$\omega = \sqrt{D/m}$, \;$T = 2\pi\sqrt{m/D}$. \;Nemcsak rugóra, bármilyen ilyen rendszerre.
 \end{fontos}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.40\linewidth}\vspace{0pt}\centering
@@ -267,12 +220,13 @@ erőkkel $F = -50\cdot 0{,}04 = -2$~N, $a = \tfrac{F}{m} = -1~\tfrac{\text{m}}{\
 \end{minipage}
 
 %====================================================================
-\dia{5. Függőleges rugó: mit változtat a nehézségi erő?}
+\dia{4. Függőleges rugó: mit változtat a nehézségi erő?}
 
 \begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
 \begin{itemize}
   \item \textbf{1.\ Irány.} Legyen a \textbf{lefelé} irány pozitív. A testre most két erő hat:
-    lefelé $mg$, felfelé a rugóerő, ami a rugó \emph{teljes} megnyúlásával arányos.
+    lefelé $mg$, és a rugóerő, ami a rugó \emph{teljes} megnyúlásával arányos (a megnyúlt rugó
+    felfelé húz, az összenyomott lefelé nyom).
   \item \textbf{2.\ Az egyensúlyi helyzet.} Itt a két erő kiegyenlíti egymást:
     \[ D\,\Delta l_0 = m g \quad\Longrightarrow\quad \Delta l_0 = \frac{mg}{D} . \]
   \item \textbf{3.\ A kitérést az egyensúlyi helyzettől mérjük} (nem a nyújtatlan rugótól!).
@@ -328,6 +282,66 @@ A legalsó pontban $a = -400\cdot 0{,}03 = -12~\tfrac{\text{m}}{\text{s}^2}$ (fe
 Erőkkel: $D(\Delta l_0 + A) - mg = 5{,}45~\text{N} - 2{,}45~\text{N} = 3$~N felfelé,
 $a = \tfrac{3}{0{,}25} = 12~\tfrac{\text{m}}{\text{s}^2}$.~\checkmark
 \end{pelda}
+\end{minipage}
+
+%====================================================================
+\dia{5. Periódusidő: rugós rezgő és fonálinga}
+
+\begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
+\begin{fontos}
+\centering rugós rezgő: \;$\boxed{T = 2\pi\sqrt{\dfrac{m}{D}}}$ \qquad\qquad
+   fonálinga: \;$\boxed{T = 2\pi\sqrt{\dfrac{l}{g}}}$
+\end{fontos}
+\textbf{A fonálinga is a lineáris erőtörvényt követi} (kis kitérésnél):
+\begin{itemize}
+  \item A test $l$ sugarú köríven mozog. A fonálerő a pályára merőleges, ezért a mozgást a
+    nehézségi erő \textbf{pálya menti összetevője} okozza: \;$F = -mg\sin\alpha$ \;(az
+    egyensúlyi helyzet felé mutat).
+  \item Kis szögnél ($\alpha \lesssim 10^\circ$) $\sin\alpha \approx \alpha = \dfrac{x}{l}$,
+    ahol $x$ az ív menti kitérés ($\alpha$ radiánban). Így
+    \;$F = -\dfrac{mg}{l}\,x$: \;lineáris erőtörvény $D = \dfrac{mg}{l}$ ,,rugóállandóval''.
+  \item Ebből \;$T = 2\pi\sqrt{\dfrac{m}{D}} = 2\pi\sqrt{\dfrac{m\,l}{mg}} = 2\pi\sqrt{\dfrac{l}{g}}$:
+    \;a tömeg kiesik.
+\end{itemize}
+\begin{itemize}
+  \item A periódusidő \textbf{nem függ az amplitúdótól} (3.\ dia). Ezért lehet ingával órát
+    szabályozni.
+  \item Nehezebb test lassabban rezeg, keményebb rugó gyorsabban. Az inga periódusideje nem
+    függ a tömegtől, csak a hossztól (és $g$-től).
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}
+\begin{pelda}
+\textbf{Rugós rezgő:} $D = 40~\tfrac{\text{N}}{\text{m}}$, $m = 0{,}4$~kg, $A = 5$~cm.\\[3pt]
+$\omega = \sqrt{\dfrac{40}{0{,}4}} = 10~\tfrac1{\text{s}}$, \quad
+$T = \dfrac{2\pi}{\omega} \approx 0{,}63$~s, \quad $f \approx 1{,}6$~Hz\\[3pt]
+$v_\text{max} = A\omega = 0{,}05\cdot 10 = 0{,}5~\tfrac{\text{m}}{\text{s}}$\\[2pt]
+$a_\text{max} = A\omega^2 = 0{,}05\cdot 100 = 5~\tfrac{\text{m}}{\text{s}^2}$
+
+\medskip
+\textbf{Fonálinga:} $l = 1$~m:\\[2pt]
+$T = 2\pi\sqrt{\dfrac{1}{9{,}8}}~\text{s} \approx 2{,}0$~s.
+\end{pelda}
+
+\centering
+\begin{tikzpicture}[>=Stealth,font=\small]
+  \fill[pattern=north east lines] (-0.8,0) rectangle (0.8,0.15);
+  \draw[thick] (-0.8,0) -- (0.8,0);
+  \draw[dashed,gray] (0,0) -- (0,-2.6);
+  \draw[thick] (0,0) -- (-115:2.6) coordinate (B);
+  \draw[gray,thick] (-90:2.6) arc (-90:-115:2.6);
+  \draw (0,-0.7) arc (-90:-115:0.7);
+  \node at (-0.18,-0.98) {\scriptsize $\alpha$};
+  \node[left] at (-115:1.5) {$l$};
+  \draw[->,thick,green!50!black] (B) -- ++(0,-1.5) coordinate (G) node[below,font=\scriptsize] {$mg$};
+  \draw[->,thick,red!75!black] (B) -- ++(-25:0.634) coordinate (Ft);
+  \draw[->,thick,blue!60!black] (B) -- ++(-115:1.359) coordinate (Fr);
+  \draw[dotted] (Ft) -- (G) -- (Fr);
+  \node[red!75!black,font=\scriptsize,anchor=north west] at ($(Ft)+(0.08,-0.02)$) {$mg\sin\alpha$};
+  \node[blue!60!black,font=\scriptsize,anchor=east] at (Fr) {$mg\cos\alpha$};
+  \fill[orange!80!black] (B) circle (5pt);
+  \node[gray,font=\scriptsize] at (-96:2.33) {$x$};
+\end{tikzpicture}
 \end{minipage}
 
 %====================================================================
