@@ -172,7 +172,7 @@ eltolódás), ha az egyik a felső, a másik az alsó szélső helyzetben van.
     és vele ellentétes irányú} (\textbf{lineáris erőtörvény}):
     \[ F = -D\,y \]
     Rugónál $D$ a rugóállandó. Newton II.\ törvényéből $ma = -Dy$, és ezt $a = -\omega^2y$-nal
-    összevetve:
+    összevetve (részletesen: következő dia):
 \end{itemize}
 \begin{fontos}
 \[ \omega = \sqrt{\frac{D}{m}} \quad\Longrightarrow\quad
@@ -213,7 +213,125 @@ $T = 2\pi\sqrt{\dfrac{1}{9{,}8}}~\text{s} \approx 2{,}0$~s.
 \end{minipage}
 
 %====================================================================
-\dia{4. A rezgés energiája}
+\dia{4. Részletesen: miért harmonikus a rugós rezgő? A mozgásegyenlet}
+
+\begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
+\begin{itemize}
+  \item \textbf{1.\ Az erő.} Vízszintes, súrlódásmentes rugós rezgőnél az eredő erő a
+    rugóerő. Ez arányos a rugó megnyúlásával (összenyomásával), és mindig az egyensúlyi
+    helyzet felé mutat: \;$F = -D\,y$ \;(a mínusz jel: a kitéréssel ellentétes irányú).
+  \item \textbf{2.\ Newton II.\ törvénye:} \;$ma = -Dy$, \;azaz\;
+    $\boxed{a = -\dfrac{D}{m}\,y}$\,. \;Ez a test \textbf{mozgásegyenlete}: minden helyzetben
+    megadja a gyorsulást.
+  \item \textbf{3.\ Összevetés a körmozgás vetületével.} Az $y = A\sin(\omega t + \varphi_0)$
+    harmonikus rezgésre (2.\ dia) minden pillanatban $a = -\omega^2 y$. Ez éppen a
+    mozgásegyenlet, ha $\omega^2 = \dfrac{D}{m}$: a harmonikus rezgés tehát
+    \emph{megfelel} a rugós test mozgásegyenletének.
+  \item \textbf{4.\ Más mozgás nem lehet.} A gyorsulás minden helyzetben adott, így az
+    indítás (kezdőhely, kezdősebesség) a mozgást egyértelműen meghatározza. Mivel a harmonikus
+    rezgés megfelel, a test \textbf{biztosan harmonikus rezgést végez}. $A$ és $\varphi_0$ az
+    indításból adódik, $\omega$ viszont csak $D$-től és $m$-től függ: ezért nem függ $T$ az
+    amplitúdótól.
+\end{itemize}
+\begin{fontos}
+\centering \textbf{Általános szabály:} ha egy mozgásra $a = -(\text{állandó})\cdot y$, akkor
+a mozgás harmonikus rezgés, és $\omega^2 = \text{állandó}$.
+\end{fontos}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}\centering
+\begin{tikzpicture}[>=Stealth,font=\small,
+    rugo/.style={decorate,decoration={coil,aspect=0.5,segment length=5pt,amplitude=5pt},thick}]
+  \foreach \yy/\xb/\lab in {0/1.8/{$y = 0$: $F = 0$},-1.5/2.6/{$y > 0$: $F < 0$},-3.0/1.0/{$y < 0$: $F > 0$}} {
+    \fill[pattern=north east lines] (-0.2,\yy-0.5) rectangle (0,\yy+0.5);
+    \draw[thick] (0,\yy-0.5) -- (0,\yy+0.5);
+    \draw[thick] (0,\yy-0.37) -- (5.6,\yy-0.37);
+    \draw[rugo] (0,\yy) -- (\xb,\yy);
+    \draw[thick,fill=orange!40] (\xb,\yy-0.35) rectangle (\xb+0.7,\yy+0.35);
+    \draw[dashed,gray] (2.15,\yy-0.5) -- (2.15,\yy+0.6);
+    \node[font=\scriptsize,anchor=west] at (4.0,\yy+0.15) {\lab};}
+  \draw[->,very thick,red!75!black] (3.3,-0.95) -- node[above,font=\scriptsize] {$F$} (2.6,-0.95);
+  \draw[<->,blue] (2.15,-2.05) -- node[below,font=\scriptsize] {$y$} (2.95,-2.05);
+  \draw[->,very thick,red!75!black] (1.0,-2.45) -- node[above,font=\scriptsize] {$F$} (1.7,-2.45);
+  \node[gray,font=\scriptsize] at (2.15,0.8) {egyensúly};
+\end{tikzpicture}
+
+\vspace{6pt}
+\begin{pelda}
+$m = 2$~kg, $D = 50~\tfrac{\text{N}}{\text{m}}$.\\[2pt]
+Mozgásegyenlet: $a = -\tfrac{50}{2}\,y = -25\,y$ \;$\Rightarrow$\;
+$\omega^2 = 25~\tfrac1{\text{s}^2}$, $\omega = 5~\tfrac1{\text{s}}$,
+$T = \tfrac{2\pi}{5} \approx 1{,}26$~s.\\[3pt]
+Ellenőrzés $y = 4$~cm-nél: a mozgásegyenletből $a = -25\cdot 0{,}04 = -1~\tfrac{\text{m}}{\text{s}^2}$;
+erőkkel $F = -50\cdot 0{,}04 = -2$~N, $a = \tfrac{F}{m} = -1~\tfrac{\text{m}}{\text{s}^2}$.~\checkmark
+\end{pelda}
+\end{minipage}
+
+%====================================================================
+\dia{5. Függőleges rugó: mit változtat a nehézségi erő?}
+
+\begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
+\begin{itemize}
+  \item \textbf{1.\ Irány.} Legyen a \textbf{lefelé} irány pozitív. A testre most két erő hat:
+    lefelé $mg$, felfelé a rugóerő, ami a rugó \emph{teljes} megnyúlásával arányos.
+  \item \textbf{2.\ Az egyensúlyi helyzet.} Itt a két erő kiegyenlíti egymást:
+    \[ D\,\Delta l_0 = m g \quad\Longrightarrow\quad \Delta l_0 = \frac{mg}{D} . \]
+  \item \textbf{3.\ A kitérést az egyensúlyi helyzettől mérjük} (nem a nyújtatlan rugótól!).
+    Ha a test $y$-nal lejjebb van, a rugó megnyúlása $\Delta l_0 + y$, az eredő erő:
+    \[ F = mg - D(\Delta l_0 + y) = \underbrace{(mg - D\,\Delta l_0)}_{=\,0} - D\,y = -D\,y . \]
+  \item \textbf{4.\ Mozgásegyenlet:} $ma = -Dy$, azaz $a = -\dfrac{D}{m}\,y$, \textbf{ugyanaz,
+    mint vízszintesen}. A mozgás harmonikus, $\omega = \sqrt{D/m}$, \;$T = 2\pi\sqrt{m/D}$:
+    $g$ nem szerepel benne. A nehézségi erő csak \textbf{eltolja az egyensúlyi helyzetet}
+    $\Delta l_0$-lal lejjebb.
+\end{itemize}
+\begin{fontos}
+\textbf{Miért kell az egyensúlytól mérni?} A nyújtatlan helyzettől mért $x = \Delta l_0 + y$
+koordinátával $a = g - \tfrac{D}{m}\,x$; ez nem $-(\text{állandó})\cdot x$ alakú, mert a test
+nem $x = 0$ körül rezeg.\\[3pt]
+\textbf{Hasznos következmény:} $\dfrac{m}{D} = \dfrac{\Delta l_0}{g}$, ezért
+$T = 2\pi\sqrt{\dfrac{\Delta l_0}{g}}$: a periódusidő a nyugalmi megnyúlásból is kiszámítható.
+\end{fontos}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}\centering
+\begin{tikzpicture}[>=Stealth,font=\small,
+    rugo/.style={decorate,decoration={coil,aspect=0.5,segment length=5pt,amplitude=5pt},thick}]
+  \foreach \x in {0,2.2,4.4} {\fill[pattern=north east lines] (\x-0.5,0) rectangle (\x+0.5,0.15);
+    \draw[thick] (\x-0.5,0) -- (\x+0.5,0);}
+  \draw[rugo] (0,0) -- (0,-1.6);
+  \draw[rugo] (2.2,0) -- (2.2,-2.3);
+  \draw[thick,fill=orange!40] (1.9,-2.3) rectangle (2.5,-2.9);
+  \draw[rugo] (4.4,0) -- (4.4,-3.0);
+  \draw[thick,fill=orange!40] (4.1,-3.0) rectangle (4.7,-3.6);
+  \draw[dashed,gray] (-0.6,-1.6) -- (5.3,-1.6);
+  \draw[dashed,gray] (1.6,-2.3) -- (5.3,-2.3);
+  \draw[<->] (1.45,-1.6) -- node[left,font=\scriptsize] {$\Delta l_0$} (1.45,-2.3);
+  \draw[<->,blue] (5.15,-2.3) -- node[right,font=\scriptsize] {$y$} (5.15,-3.0);
+  \draw[->,thick,red!75!black] (2.35,-2.6) -- (2.35,-1.85) node[right,font=\scriptsize] {$D\Delta l_0$};
+  \draw[->,thick,green!50!black] (2.05,-2.6) -- (2.05,-3.35) node[left,font=\scriptsize] {$mg$};
+  \draw[->,thick,red!75!black] (4.55,-3.3) -- (4.55,-2.05) node[right,font=\scriptsize]
+     {$D(\Delta l_0 + y)$};
+  \draw[->,thick,green!50!black] (4.25,-3.3) -- (4.25,-4.05) node[left,font=\scriptsize] {$mg$};
+  \draw[->,thick] (-0.9,-2.6) -- (-0.9,-3.6) node[below,font=\scriptsize] {$+$};
+  \node[font=\scriptsize] at (0,-4.4) {nyújtatlan};
+  \node[font=\scriptsize] at (2.2,-4.4) {egyensúly};
+  \node[font=\scriptsize] at (4.4,-4.4) {kitérítve};
+\end{tikzpicture}
+
+\vspace{4pt}
+\begin{pelda}
+$m = 0{,}25$~kg a $D = 100~\tfrac{\text{N}}{\text{m}}$-es rugón. Egyensúlyban
+$\Delta l_0 = \tfrac{mg}{D} = \tfrac{0{,}25\cdot 9{,}8}{100}~\text{m} = 2{,}45$~cm.
+Még $3$~cm-rel lehúzzuk és elengedjük: $A = 3$~cm.\\[3pt]
+$a = -\tfrac{100}{0{,}25}\,y = -400\,y$ \;$\Rightarrow$\; $\omega = 20~\tfrac1{\text{s}}$,
+$T = \tfrac{2\pi}{20} \approx 0{,}31$~s.\\
+(Másképp: $T = 2\pi\sqrt{0{,}0245/9{,}8}~\text{s} = 2\pi\cdot 0{,}05~\text{s} \approx 0{,}31$~s.)\\[3pt]
+A legalsó pontban $a = -400\cdot 0{,}03 = -12~\tfrac{\text{m}}{\text{s}^2}$ (felfelé).
+Erőkkel: $D(\Delta l_0 + A) - mg = 5{,}45~\text{N} - 2{,}45~\text{N} = 3$~N felfelé,
+$a = \tfrac{3}{0{,}25} = 12~\tfrac{\text{m}}{\text{s}^2}$.~\checkmark
+\end{pelda}
+\end{minipage}
+
+%====================================================================
+\dia{6. A rezgés energiája}
 
 \begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -254,7 +372,7 @@ $y = 3$~cm-nél: $v = 10\cdot\sqrt{0{,}05^2 - 0{,}03^2} = 0{,}4~\tfrac{\text{m}}
 \end{minipage}
 
 %====================================================================
-\dia{5. Csillapított rezgés, kényszerrezgés, rezonancia}
+\dia{7. Csillapított rezgés, kényszerrezgés, rezonancia}
 
 \begin{minipage}[t]{0.50\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -301,7 +419,7 @@ rádió hangolása is rezonancia: a vevő áramköre csak a kiválasztott frekve
 \end{minipage}
 
 %====================================================================
-\dia{6. Mi a hullám?}
+\dia{8. Mi a hullám?}
 
 \begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -342,7 +460,7 @@ rádió hangolása is rezonancia: a vevő áramköre csak a kiválasztott frekve
 \end{minipage}
 
 %====================================================================
-\dia{7. A hullám jellemzői: hullámhossz és terjedési sebesség}
+\dia{9. A hullám jellemzői: hullámhossz és terjedési sebesség}
 
 \begin{minipage}[t]{0.50\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -389,7 +507,7 @@ tartomány ($20$~Hz--$20$~kHz) hullámhosszai $17$~m és $1{,}7$~cm között van
 \end{minipage}
 
 %====================================================================
-\dia{8. Visszaverődés és törés}
+\dia{10. Visszaverődés és törés}
 
 \begin{minipage}[t]{0.50\linewidth}\vspace{0pt}
 \textbf{Visszaverődés:} a közeg határán a hullám (részben) visszaverődik.
@@ -449,7 +567,7 @@ a parttal párhuzamosan érkeznek.}
 \end{minipage}
 
 %====================================================================
-\dia{9. Interferencia: hullámok találkozása}
+\dia{11. Interferencia: hullámok találkozása}
 
 \begin{minipage}[t]{0.55\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -493,7 +611,7 @@ Ahol két hegy (vagy két völgy) találkozik: erősítés;\\ahol hegy és völg
 \end{minipage}
 
 %====================================================================
-\dia{10. Állóhullám}
+\dia{12. Állóhullám}
 
 \begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -535,7 +653,7 @@ hullám fér rájuk.}
 \end{minipage}
 
 %====================================================================
-\dia{11. Állóhullám, ha csak az egyik vég rögzített}
+\dia{13. Állóhullám, ha csak az egyik vég rögzített}
 
 \begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -590,7 +708,7 @@ alaphang & $f_1 = c/(2L)$ & $f_1 = c/(4L)$ \\
 \end{minipage}
 
 %====================================================================
-\dia{12. Huygens elve és az elhajlás}
+\dia{14. Huygens elve és az elhajlás}
 
 \begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
 \begin{itemize}
@@ -634,7 +752,7 @@ ad. Elhajlást csak nagyon keskeny réseken mutat (optikai rács, előző óra!)
 \end{minipage}
 
 %====================================================================
-\dia{13. Összefoglalás}
+\dia{15. Összefoglalás}
 
 \begin{minipage}[t]{0.50\linewidth}\vspace{0pt}
 \begin{fontos}[title=Rezgések,fonttitle=\bfseries]
