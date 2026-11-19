@@ -59,6 +59,113 @@
   \end{scope}
 }
 
+% Képszerkesztés lencsével (melléklet): #1 = f, #2 = t, #3 = T, #4 = xmin, #5 = xmax
+\newcommand{\Lkep}[5]{%
+  \pgfmathtruncatemacro{\Lvegt}{abs(#2-#1)<0.01 ? 1 : 0}%
+  \ifnum\Lvegt=0
+    \pgfmathsetmacro{\Lk}{1/(1/#1 - 1/#2)}%
+    \pgfmathsetmacro{\LK}{-#3*\Lk/#2}%
+    \pgfmathtruncatemacro{\Lvirt}{\Lk<0 ? 1 : 0}%
+  \else \def\Lvirt{2}\fi
+  \pgfmathtruncatemacro{\Lgy}{#1>0 ? 1 : 0}%
+  \useasboundingbox (#4,-2.1) rectangle (#5,2.1);
+  \draw[->,gray] (#4,0) -- (#5,0);
+  \ifnum\Lgy=1
+    \draw[{Stealth[length=2mm]}-{Stealth[length=2mm]},thick,blue!60!black] (0,-1.85) -- (0,1.85);
+  \else
+    \draw[{Stealth[length=2mm,reversed]}-{Stealth[length=2mm,reversed]},thick,blue!60!black] (0,-1.85) -- (0,1.85);
+  \fi
+  \foreach \s in {1,-1} {\fill (\s*#1,0) circle (1.5pt); \draw (\s*2*#1,-0.08) -- (\s*2*#1,0.08);}
+  \node[below left,font=\scriptsize,inner sep=1.5pt] at (-#1,0) {$F$};
+  \node[below right,font=\scriptsize,inner sep=1.5pt] at (#1,0) {$F$};
+  \node[below left,font=\scriptsize,inner sep=1.5pt] at (-2*#1,0) {$2F$};
+  \node[below right,font=\scriptsize,inner sep=1.5pt] at (2*#1,0) {$2F$};
+  \draw[very thick,-{Stealth[length=2mm]}] (-#2,0) -- (-#2,#3);
+  \begin{scope}
+    \clip (#4,-2.1) rectangle (#5,2.1);
+    \ifnum\Lgy=1
+      \draw[semithick,red!75!black] (-#2,#3) -- (0,#3) -- ($(0,#3)!10!(#1,0)$);
+    \else
+      \draw[semithick,red!75!black] (-#2,#3) -- (0,#3) -- ($(0,#3)!-10!(#1,0)$);
+    \fi
+    \draw[semithick,orange!85!black] (-#2,#3) -- ($(-#2,#3)!10!(0,0)$);
+    \ifcase\Lvirt
+      \draw[semithick,violet] (-#2,#3) -- (0,\LK) -- (#5,\LK);
+      \draw[very thick,green!50!black,-{Stealth[length=2mm]}] (\Lk,0) -- (\Lk,\LK);
+    \or
+      \ifnum\Lgy=1
+        \draw[semithick,red!75!black,dashed] (0,#3) -- (\Lk,\LK);
+        \draw[semithick,orange!85!black,dashed] (-#2,#3) -- (\Lk,\LK);
+      \else
+        \draw[semithick,red!75!black,dashed] (0,#3) -- (#1,0);
+      \fi
+      \draw[very thick,dashed,green!50!black,-{Stealth[length=2mm]}] (\Lk,0) -- (\Lk,\LK);
+    \fi
+  \end{scope}
+}
+
+% Képszerkesztés gömbtükörrel (melléklet): #1 = f, #2 = t, #3 = T, #4 = xmin, #5 = xmax
+% A tükör a tengelyt az origóban metszi, a fény balról jön. Homorú: f > 0, domború: f < 0.
+\newcommand{\Tkep}[5]{%
+  \pgfmathsetmacro{\Tsg}{#1>0 ? -1 : 1}%
+  \pgfmathtruncatemacro{\Tvegt}{abs(#2-#1)<0.01 ? 1 : 0}%
+  \pgfmathsetmacro{\Txa}{\Tsg*0.15*#3*#3/3.4225}%
+  \ifnum\Tvegt=0
+    \pgfmathsetmacro{\Tk}{1/(1/#1 - 1/#2)}%
+    \pgfmathsetmacro{\TK}{-#3*\Tk/#2}%
+    \pgfmathsetmacro{\Tix}{-\Tk}%
+    \pgfmathsetmacro{\Txb}{\Tsg*0.15*\TK*\TK/3.4225}%
+    \pgfmathtruncatemacro{\Tvirt}{\Tk<0 ? 1 : 0}%
+  \else \def\Tvirt{2}\fi
+  \useasboundingbox (#4,-2.1) rectangle (#5,2.1);
+  \draw[->,gray] (#4,0) -- (#5,0);
+  \draw[very thick,blue!60!black,domain=-1.85:1.85,samples=31,smooth,variable=\y]
+    plot ({\Tsg*0.15*\y*\y/3.4225},\y);
+  \foreach \y in {-1.75,-1.45,...,1.9}
+    \draw[blue!60!black] ({\Tsg*0.15*\y*\y/3.4225},\y) -- ++(0.18,0.14);
+  \fill (-#1,0) circle (1.5pt); \fill (-2*#1,0) circle (1.5pt);
+  \pgfmathtruncatemacro{\Thom}{#1>0 ? 1 : 0}%
+  \ifnum\Thom=1
+    \node[below left,font=\scriptsize,inner sep=1.5pt] at (-#1,0) {$F$};
+    \node[below left,font=\scriptsize,inner sep=1.5pt] at (-2*#1,0) {$C$};
+  \else
+    \node[below right,font=\scriptsize,inner sep=1.5pt] at (-#1,0) {$F$};
+    \node[below right,font=\scriptsize,inner sep=1.5pt] at (-2*#1,0) {$C$};
+  \fi
+  \draw[very thick,-{Stealth[length=2mm]}] (-#2,0) -- (-#2,#3);
+  \begin{scope}
+    \clip (#4,-2.1) rectangle (#5,2.1);
+    \draw[semithick,red!75!black] (-#2,#3) -- (\Txa,#3);
+    \draw[semithick,orange!85!black] (-#2,#3) -- (0,0) -- ($(0,0)!10!(-#2,-#3)$);
+    \ifcase\Tvirt
+      \draw[semithick,red!75!black] (\Txa,#3) -- ($(\Txa,#3)!10!(\Tix,\TK)$);
+      \draw[semithick,violet] (-#2,#3) -- (\Txb,\TK) -- (#4,\TK);
+      \draw[very thick,green!50!black,-{Stealth[length=2mm]}] (\Tix,0) -- (\Tix,\TK);
+    \or
+      \draw[semithick,red!75!black] (\Txa,#3) -- ($(\Txa,#3)!-10!(\Tix,\TK)$);
+      \ifnum\Thom=1
+        \draw[semithick,red!75!black,dashed] (\Txa,#3) -- (\Tix,\TK);
+      \else
+        \draw[semithick,red!75!black,dashed] (\Txa,#3) -- (-#1,0);
+      \fi
+      \draw[semithick,orange!85!black,dashed] (0,0) -- (\Tix,\TK);
+      \draw[very thick,dashed,green!50!black,-{Stealth[length=2mm]}] (\Tix,0) -- (\Tix,\TK);
+    \or
+      \draw[semithick,red!75!black] (\Txa,#3) -- ($(\Txa,#3)!10!(-#1,0)$);
+    \fi
+  \end{scope}
+}
+
+% egy cella a mellékletben: #1 = rajz, #2 = felirat
+\newcommand{\cella}[2]{%
+  \begin{minipage}[t]{0.32\linewidth}\centering
+  \begin{tikzpicture}[x=0.95cm,y=0.95cm,>=Stealth]#1\end{tikzpicture}\\[4pt]
+  \parbox{\linewidth}{\centering\small #2}
+  \end{minipage}}
+
+% jelmagyarázat-vonal
+\newcommand{\jel}[1]{\tikz[baseline=-0.6ex]\draw[very thick,#1] (0,0) -- (0.6,0);}
+
 \begin{document}
 
 %====================================================================
@@ -392,5 +499,62 @@ előjelek & $k < 0$: látszólagos; \; $f < 0$: szóró \\
 A feladatlap órán meg nem oldott feladatai, és egy szóbeli tétel elmondása (3--4 perc).
 \end{fontos}
 \end{minipage}
+
+%====================================================================
+\dia{7. Melléklet: képszerkesztés lencsékkel -- az összes eset}
+
+{\small\jel{red!75!black} tengellyel párhuzamos sugár \quad
+\jel{orange!85!black} optikai középponton átmenő sugár \quad
+\jel{violet} fókuszon átmenő sugár \quad
+\textcolor{green!50!black}{\textbf{$\uparrow$}} kép\\
+szaggatott vonal: a sugarak meghosszabbítása, látszólagos kép}
+
+\vspace{4pt}
+\noindent
+\cella{\Lkep{1.2}{3}{0.7}{-3.4}{3.2}}{\textbf{Gyűjtő, $t > 2f$:} valódi, fordított,
+  kicsinyített; $f < k < 2f$ \\ (fényképezőgép, szem)}\hfill
+\cella{\Lkep{1.2}{2.4}{0.7}{-2.9}{3.2}}{\textbf{Gyűjtő, $t = 2f$:} valódi, fordított,
+  azonos méretű ($N = 1$); $k = 2f$}\hfill
+\cella{\Lkep{1.2}{1.8}{0.7}{-2.9}{4.1}}{\textbf{Gyűjtő, $f < t < 2f$:} valódi, fordított,
+  nagyított; $k > 2f$ \\ (vetítő)}
+
+\vspace{8pt}
+\noindent
+\cella{\Lkep{1.2}{1.2}{0.7}{-2.9}{3.4}}{\textbf{Gyűjtő, $t = f$:} nincs kép, a kilépő
+  sugarak párhuzamosak (a kép ,,a~végtelenben'' van)}\hfill
+\cella{\Lkep{1.2}{0.7}{0.7}{-2.9}{2.9}}{\textbf{Gyűjtő, $t < f$:} látszólagos, egyenes,
+  nagyított; $k < 0$, a tárgy oldalán \\ (nagyító)}\hfill
+\cella{\Lkep{-1.2}{2.0}{0.7}{-2.9}{2.9}}{\textbf{Szóró, bármely $t$:} látszólagos, egyenes,
+  kicsinyített; a kép $F$ és a lencse között \\ (rövidlátó szemüvege)}
+
+%====================================================================
+\dia{8. Melléklet: képszerkesztés gömbtükrökkel -- az összes eset}
+
+{\small\jel{red!75!black} tengellyel párhuzamos sugár \quad
+\jel{orange!85!black} a tükör közepébe érkező sugár (szimmetrikusan verődik vissza) \quad
+\jel{violet} fókuszon átmenő sugár\\
+$C$: görbületi középpont, $R = 2f$ \quad szaggatott vonal: a sugarak meghosszabbítása, látszólagos kép}
+
+\vspace{4pt}
+\noindent
+\cella{\Tkep{1.2}{3}{0.7}{-3.4}{0.6}}{\textbf{Homorú, $t > 2f$:} valódi, fordított,
+  kicsinyített; a kép $F$ és $C$ között}\hfill
+\cella{\Tkep{1.2}{2.4}{0.7}{-3.0}{0.6}}{\textbf{Homorú, $t = 2f$:} valódi, fordított,
+  azonos méretű; a kép $C$-ben}\hfill
+\cella{\Tkep{1.2}{1.8}{0.7}{-4.1}{0.6}}{\textbf{Homorú, $f < t < 2f$:} valódi, fordított,
+  nagyított; a kép $C$-n túl}
+
+\vspace{8pt}
+\noindent
+\cella{\Tkep{1.2}{1.2}{0.7}{-3.2}{0.6}}{\textbf{Homorú, $t = f$:} nincs kép, a visszavert
+  sugarak párhuzamosak \\ (reflektor, zseblámpa)}\hfill
+\cella{\Tkep{1.2}{0.7}{0.7}{-2.9}{2.2}}{\textbf{Homorú, $t < f$:} látszólagos, egyenes,
+  nagyított; a tükör mögött \\ (borotválkozótükör)}\hfill
+\cella{\Tkep{-1.2}{2.0}{0.7}{-2.4}{2.8}}{\textbf{Domború, bármely $t$:} látszólagos, egyenes,
+  kicsinyített; a tükör mögött \\ (közlekedési tükör)}
+
+\vspace{6pt}
+{\small A valódi kép a tükör \emph{előtt} keletkezik (ott fogható fel ernyőn), a látszólagos
+a tükör \emph{mögött}.}
 
 \end{document}
